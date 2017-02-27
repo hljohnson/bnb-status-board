@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Description:
+  = @task.description
+%p
+  %strong Owner:
+  = @task.user
+%p
+  %strong Due date:
+  = @task.due_at
+= link_to 'Edit', edit_task_path(@task)
+|
+\#{link_to 'Back', tasks_path}
