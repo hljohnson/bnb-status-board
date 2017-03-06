@@ -1,6 +1,6 @@
-= simple_form_for @task do |f|
+= simple_form_for ([@project, @task]) do |f|
     = f.input :description
-    = f.input :owner_id
+    = f.input :owner_id, collection: (User.all.map { |s| [s.first_name, s.id]}), :include_blank => true
     = f.input :due_at
     = f.submit 'Save', class: "btn btn-primary btn-lg"
-    = link_to 'Back', tasks_path
+

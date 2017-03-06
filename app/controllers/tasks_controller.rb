@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit]
 
   # GET /tasks
   # GET /tasks.json
@@ -15,6 +16,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /tasks/1/edit
@@ -24,12 +26,13 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
+    @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
+        format.html { redirect_to @project, notice: 'Task was successfully created.' }
+        format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -42,8 +45,8 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
+        format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
+        format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -67,8 +70,12 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
+    def set_project
+      @project = @task.project
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :due_at, :owner_id)
+      params.require(:task).permit(:description, :due_at, :owner_id, :project_id)
     end
 end
