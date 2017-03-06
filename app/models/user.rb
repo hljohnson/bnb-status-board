@@ -9,9 +9,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 
 	# Relationships
-  has_many :projects, class_name: "Project", foreign_key: "owner_id"
+  has_many :owned_projects, class_name: "Project", foreign_key: "owner_id"
   has_many :tasks, class_name: "Task", foreign_key: "owner_id"
-	#has_many :tasks
-	#has_and_belongs_to_many :projects
+  has_many :projects, -> { distinct }, through: :tasks
 
 end
