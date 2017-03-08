@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
+# Use pg as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma', '~> 3.0'
 
 gem 'devise'
-gem 'better_errors'
 gem 'will_paginate' #,                '3.0.4' # https://github.com/mislav/will_paginate
   gem 'bootstrap-will_paginate' #,    '0.0.9'
   gem 'simple_form', "~> 3.2.1"
@@ -43,6 +42,7 @@ gem 'haml'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+	gem 'better_errors'
 end
 
 group :development do
