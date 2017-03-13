@@ -1,8 +1,14 @@
 %p#notice= notice
 %h1 Listing Projects
 
+
+= link_to 'New Project', new_project_path
+%br/
+%br/
 - @projects.each do |project|
   = link_to project.name, project
+  = project.aasm_state
+  %br/
   = link_to "Create Task", new_project_task_path(project)
   = link_to "Edit Project", edit_project_path(project)
   %table
@@ -19,4 +25,5 @@
           %td= task.description
           %td= task.due_at
   %br/
-= link_to 'New Project', new_project_path
+  %br/
+  
