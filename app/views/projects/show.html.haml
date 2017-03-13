@@ -4,12 +4,14 @@
 %table
 	%thead
 		%tr
+			%th
 			%th Description
 			%th Due Date
 			%th Owner
 		%tbody
 			- @project.tasks.each do |task|
 				%tr
+				%td= button_to "Mark as #{task.other_state}", update_state_project_task_path(id: task.id, project_id: @project.id), method: :put
 				%td= task.description
 				%td= task.due_at
 				%td= User.find(task.owner_id).first_name

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_project
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :update_state]
 
   # GET /tasks
   # GET /tasks.json
@@ -62,6 +62,12 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def update_state
+    @task.incomplete? ? @task.mark_complete! : @task.mark_incomplete!
+    redirect_to :back
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

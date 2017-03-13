@@ -7,12 +7,13 @@
 	%table
 		%thead
 			%tr
+				%th Complete?
 				%th Description
 				%th Due Date
-				%th{:colspan => "3"}
 			%tbody
 				- project.tasks.select {|t| t.owner_id == @user.id}.each do |task|
 					%tr
+					%td= button_to "Mark as #{task.other_state}", update_state_project_task_path(project_id: project.id, id: task.id), method: :put
 					%td= task.description
 					%td= task.due_at
 	%br/

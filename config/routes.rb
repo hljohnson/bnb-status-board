@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :members, only: [:index]
-    resources :tasks
+    resources :tasks do
+      put 'update_state', on: :member
+    end
   end
   resources :users
 
