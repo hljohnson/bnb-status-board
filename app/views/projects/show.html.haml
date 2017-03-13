@@ -8,14 +8,14 @@
 		%tr
 			%th
 			%th Description
-			%th Due Date
 			%th Owner
+			%th Due Date
 		%tbody
 			- @project.tasks.each do |task|
 				%tr
 				%td= button_to "Mark as #{task.other_state}", update_state_project_task_path(id: task.id, project_id: @project.id), method: :put
 				%td= task.description
+				%td= link_to User.find(task.owner_id).first_name, user_path(task.owner_id)
 				%td= task.due_at
-				%td= User.find(task.owner_id).first_name
 				%td= link_to 'Edit', edit_project_task_path(id: task.id, project_id: @project.id)
 %br/
