@@ -1,19 +1,76 @@
-%h1 
-	Listing Tasks for 
-	=@user.first_name
+/ %h1 
+/ 	Listing Tasks for 
+/ 	=@user.first_name
 
-- @projects.each do |project|
-	= link_to project.name, project
-	%table
-		%thead
-			%tr
-				%th
-				%th Description
-				%th Due Date
-			%tbody
-				- project.tasks.select {|t| t.owner_id == @user.id}.each do |task|
-					%tr
-					%td= button_to "Mark as #{task.other_state}", update_state_project_task_path(project_id: project.id, id: task.id), method: :put
-					%td= task.description
-					%td= task.due_at
+/ - @projects.each do |project|
+/ 	= link_to project.name, project
+/ 	%table
+/ 		%thead
+/ 			%tr
+/ 				%th
+/ 				%th Description
+/ 				%th Due Date
+/ 			%tbody
+/ 				- project.tasks.select {|t| t.owner_id == @user.id}.each do |task|
+/ 					%tr
+/ 					%td= button_to "Mark as #{task.other_state}", update_state_project_task_path(project_id: project.id, id: task.id), method: :put
+/ 					%td= task.description
+/ 					%td= task.due_at
+/ 	%br/
+
+.container
+	%h2 #{@user.first_name}'s Tasks
+	%hr/
+	%p.project-key
+		%span.on-track On Track
+		%span.at-risk At Risk
+		%span.in-trouble In Trouble
+		%span.in-maintenance In Maintenance
+		%span.waiting-on-client Waiting On Client
 	%br/
+	#flex-container.row
+		/ Card
+		- @projects.each do |project|
+			.card.on-track.col-sm-5
+				.card-header
+					%h3
+						%a=link_to project.name, project
+				.card-block
+					%p.card-text
+						- project.tasks.select {|t| t.owner_id == @user.id}.each do |task|
+							.checkbox
+								%input{:type => "checkbox", :value => ""}
+								%label.card-task=task.description
+/ card block
+/ card
+/ / Card
+/ .card.at-risk.col-sm-5
+/   .card-header
+/     %h3
+/       %a{:href => "specific-project.html"} TASN
+/   .card-block
+/     .checkbox
+/       %input{:type => "checkbox", :value => ""}/
+/       %label.card-task Meet with Matt about design
+/     .checkbox
+/       %input{:type => "checkbox", :value => ""}/
+/       %label.card-task Implement that feature
+/     .checkbox
+/       %input{:type => "checkbox", :value => ""}/
+/       %label.card-task Fix that bug that does that thing
+/     .checkbox
+/       %input{:type => "checkbox", :value => ""}/
+/       %label.card-task Call Sally about new feature idea
+/     .checkbox
+/       %input{:type => "checkbox", :value => ""}/
+/       %label.card-task Fix that other bug
+/     %p
+/     %center
+/       %strong
+/         %a{:href => ""} SEE MORE
+/ card block
+/ card
+/ /flex-container
+/ /.container
+/
+

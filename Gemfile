@@ -30,6 +30,7 @@ gem 'will_paginate' #,                '3.0.4' # https://github.com/mislav/will_p
   gem 'bootstrap-will_paginate' #,    '0.0.9'
   gem 'simple_form', "~> 3.2.1"
 gem 'haml'
+gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

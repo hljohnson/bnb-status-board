@@ -27,5 +27,4 @@ class Task < ActiveRecord::Base
 		aasm.states(:permitted => true).map(&:name).first
 	end
 
-
 end
