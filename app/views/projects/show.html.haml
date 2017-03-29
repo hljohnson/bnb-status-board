@@ -92,9 +92,10 @@
 					%th.top-row Name
 					%th.top-row Tasks on Project
 				%tbody
-					%tr
-						%td Ashley Hutton
-						%td 10
+					- @users.each do |user|
+						%tr
+							%td=user.first_name
+							%td=user.tasks.count
 		#details.tab-pane{:role => "tabpanel"}
 			%br/
 			%table.table
@@ -103,7 +104,7 @@
 						%td.top-row
 							%b Owner
 						%td.top-row
-							=User.find(@project.owner_id).first_name
+							No one 
 					%tr
 						%td
 							%b Client

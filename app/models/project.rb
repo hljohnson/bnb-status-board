@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 	# Relationships
 	has_many :tasks
 	belongs_to :user, class_name: "User", foreign_key: "owner_id"
+	has_many :users, -> { distinct }, through: :tasks
 
 	include AASM
 	aasm do

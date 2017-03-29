@@ -1,0 +1,20 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %h5#exampleModalLabel.modal-title Create New Project
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+
+    = simple_form_for (@project),:remote => true do |f|
+      .modal-body
+        .form-group.row
+          %label.col-2.col-form-label{:for => "example-text-input"} Name
+          .col-10= f.text_field :name, :class => 'form-control'
+        .form-group.row
+          %label.col-2.col-form-label{:for => "example-text-input"} Client
+          .col-10= f.text_field :client, {:class => 'form-control'}
+        .form-group.row
+          %label.col-2.col-form-label{:for => "example-text-input"} Status
+          .col-10= f.select :aasm_state, options_for_select(Project.aasm.states), {}, {:class => 'form-control'}
+      .modal-footer 
+        = f.submit 'Save', class: "btn btn-green"

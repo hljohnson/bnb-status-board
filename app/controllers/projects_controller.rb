@@ -10,15 +10,25 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @users = @project.users.includes(:tasks)
   end
 
   # GET /projects/new
   def new
     @project = Project.new
+
+    respond_to do |format|
+      #format.html
+      format.js
+    end
+  
   end
 
   # GET /projects/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /projects
@@ -29,9 +39,11 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.js { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
+        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @project }); render :template => 'shared/modal_errors' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -44,9 +56,11 @@ class ProjectsController < ApplicationController
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
+        format.js { redirect_to @project, notice: 'Project was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.js {@partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @project }); render :template => 'shared/modal_errors'}
       end
     end
   end

@@ -19,34 +19,36 @@
 /               %li= link_to 'My Tasks', current_user
 /               %li= link_to 'Projects', projects_path
 
-%nav.navbar.navbar-toggleable-md.fixed-top
-  .container
-    %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
-    %a.navbar-brand{:href => "#"} Voyage
-    .collapse.navbar-collapse
-      %ul.navbar-nav.mr-auto
-        %li.nav-item.active
-          %a.nav-link.nav-link-shift
-            =link_to 'My Tasks', current_user
-            /%span.sr-only (current)
-        %li.nav-item.active
-          %a.nav-link.nav-link-shift
-            =link_to 'Projects', projects_path
-            %span.sr-only (current)
-        %li.nav-item.active
-          %a.nav-link.nav-link-shift{:href => "archive.html"}
-            Archive
-            %span.sr-only (current)
-      %form.form-inline.my-2.my-lg-0
-        .nav-item.active
-          %a.nav-link
-            =link_to 'Logout', destroy_user_session_path, :method => :delete
-            %span.sr-only (current)
+- if user_signed_in?
+  %nav.navbar.navbar-toggleable-md.fixed-top
+    .container
+      %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      %a.navbar-brand{:href => "#"} Voyage
+      .collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item.active
+            %a.nav-link.nav-link-shift
+              =link_to 'My Tasks', current_user
+              /%span.sr-only (current)
+          %li.nav-item.active
+            %a.nav-link.nav-link-shift
+              =link_to 'Projects', projects_path
+              %span.sr-only (current)
+          %li.nav-item.active
+            %a.nav-link.nav-link-shift
+              =link_to 'Archive', archive_path
+              %span.sr-only (current)
+        %form.form-inline.my-2.my-lg-0
+          .nav-item.active
+            %a.nav-link
+              =link_to 'Logout', destroy_user_session_path, :method => :delete
+              %span.sr-only (current)
 
 %p.notice= notice
 %p.alert= alert
 = yield
+
 
 
 / Placed at the end of the document so the pages load faster

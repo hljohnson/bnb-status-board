@@ -52,17 +52,17 @@
             %a=link_to project.name, project
           .card-header-edit
             %button.btn.btn-link.btn-link-override
-              =link_to '', edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#editModal'}
-              %i.fa.fa-pencil.fa-2x{"aria-hidden" => "true"}
+              =link_to edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#createNewModal'} do
+                %i.fa.fa-pencil.fa-2x{"aria-hidden" => "true"}
         .card-block
           .checkbox
             %button.btn.btn-link.btn-link-override{"data-target" => "#newTaskModal", "data-toggle" => "modal", :type => "button"}
-              =link_to "", new_project_task_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#newTaskModal'}
-              %i.fa.fa-plus{"aria-hidden" => "true"}
-              %label.card-task Create New Task
+              =link_to new_project_task_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#newTaskModal'} do
+                %i.fa.fa-plus{"aria-hidden" => "true"}
+                %label.card-task Create New Task
           - project.tasks.each do |task|
             .checkbox
-              %input{:type => "checkbox", :value => ""}
+              %input{:type => "checkbox", :value => "", checked: task.complete?}
               %label.card-task=task.description
             .checkbox 
       / card block
@@ -70,103 +70,7 @@
 
   / /flex-container
 / /.container
-/ MODALS ----
-/ modal for new project
-#createNewModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-header
-        %h5#exampleModalLabel.modal-title Create New Project
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-      .modal-body
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-text-input"} Name
-          .col-10
-            %input#example-text-input.form-control{:type => "text"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-search-input"} Owner
-          .col-10
-            %input#example-search-input.form-control{:type => "search"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-search-input"} Client
-          .col-10
-            %input#example-search-input.form-control{:type => "search"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-url-input"} Status
-          .btn-group
-            %button.btn.btn-secondary.dropdown-toggle.btn-push-left{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-              Project Status
-            .dropdown-menu.dropdown-menu-right
-              %button.dropdown-item{:type => "button"} On Track
-              %button.dropdown-item{:type => "button"} At Risk
-              %button.dropdown-item{:type => "button"} In Trouble
-              %button.dropdown-item{:type => "button"} Maintenance Mode
-              %button.dropdown-item{:type => "button"} Waiting on Client
-      .modal-footer
-        %button.btn.btn-green{:type => "button"} CREATE
-/ modal for edit project
-#editModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-header
-        %h5#exampleModalLabel.modal-title Edit Project
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-      .modal-body
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-text-input"} Name
-          .col-10
-            %input#example-text-input.form-control{:type => "text"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-search-input"} Owner
-          .col-10
-            %input#example-search-input.form-control{:type => "search"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-search-input"} Client
-          .col-10
-            %input#example-search-input.form-control{:type => "search"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-url-input"} Status
-          .btn-group
-            %button.btn.btn-secondary.dropdown-toggle.btn-push-left{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-              Select
-            .dropdown-menu.dropdown-menu-right
-              %button.dropdown-item{:type => "button"} On Track
-              %button.dropdown-item{:type => "button"} At Risk
-              %button.dropdown-item{:type => "button"} In Trouble
-              %button.dropdown-item{:type => "button"} Maintenance Mode
-              %button.dropdown-item{:type => "button"} Waiting on Client
-      .modal-footer
-        %button.btn.btn-red{:type => "button"} DELETE PROJECT
-        %button.btn.btn-green{:type => "button"} SAVE
-/ modal for new task
+
 #newTaskModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-header
-        %h5#exampleModalLabel.modal-title New Task for Project Name
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-      .modal-body
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-text-input"} Description
-          .col-10
-            %input#example-text-input.form-control{:type => "text"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-date-input"} Due Date
-          .col-10
-            %input#example-date-input.form-control{:type => "date"}/
-        .form-group.row
-          %label.col-2.col-form-label{:for => "example-url-input"} Owner
-          .btn-group
-            %button.btn.btn-secondary.dropdown-toggle.btn-push-left{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-              Select
-            .dropdown-menu.dropdown-menu-right
-              %button.dropdown-item{:type => "button"} Nate
-              %button.dropdown-item{:type => "button"} Matt
-              %button.dropdown-item{:type => "button"} Ashley
-              %button.dropdown-item{:type => "button"} Hannah
-              %button.dropdown-item{:type => "button"} Will
-      .modal-footer
-        %button.btn.btn-green{:type => "button"} CREATE
+#createNewModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog",:tabindex => "-1"}
+

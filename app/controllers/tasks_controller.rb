@@ -16,10 +16,17 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = @project.tasks.new
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /tasks/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /tasks
@@ -31,10 +38,11 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to @project, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @project }
+        format.js { redirect_to @task.project, notice: 'Task was successfully updated.' }
       else
-
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @project }); render :template => 'shared/modal_errors' }
       end
     end
   end
@@ -46,9 +54,11 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
+        format.js { redirect_to @task.project, notice: 'Task was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @project }); render :template => 'shared/modal_errors' }
       end
     end
   end
