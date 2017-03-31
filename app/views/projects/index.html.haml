@@ -1,34 +1,3 @@
-/ %p#notice= notice
-/ %h1 Listing Projects
-
-
-/ = link_to 'New Project', new_project_path
-/ %br/
-/ %br/
-/ - @projects.each do |project|
-/   = link_to project.name, project
-/   = project.aasm_state
-/   %br/
-/   = link_to "Create Task", new_project_task_path(project)
-/   = link_to "Edit Project", edit_project_path(project)
-/   %table
-/     %thead
-/       %tr
-/         %th
-/         %th Description
-/         %th Owner
-/         %th Due Date
-/         %th{:colspan => "3"}
-/       %tbody
-/         - project.tasks.each do |task|
-/           %tr
-/           %td= button_to "Mark as #{task.other_state}", update_state_project_task_path(id: task.id, project_id: project.id), method: :put
-/           %td= task.description
-/           %td= link_to User.find(task.owner_id).first_name, user_path(task.owner_id)
-/           %td= task.due_at
-/   %br/
-/   %br/
-  
 .container
   %h2.header-align Projects
   / Button trigger modal
@@ -62,9 +31,8 @@
                 %label.card-task Create New Task
           - project.tasks.each do |task|
             .checkbox
-              %input{:type => "checkbox", :value => "", checked: task.complete?}
+              %input{:type => "checkbox", :task_id => task.id, :project_id => project.id, checked: task.complete?, :remote => true}
               %label.card-task=task.description
-            .checkbox 
       / card block
     / card
 

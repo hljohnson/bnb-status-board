@@ -1,0 +1,29 @@
+[DONEDONEDONEDONEDONE] Make checkboxes responsive (oh my that took forever)
+Nav bar, span tag that controlled spacing on links
+Color of clickable project titles/unwanted underlining
+Black highlighting on navbar items
+Associate status colors with card header colors and task colors
+Fix members section of specific project page
+Make modals close on 'x'
+[DONE] Add archive page
+[DONE] Don't let users access unless they are logged in
+
+
+MODALS
+Make modals work
+Make aasm dropdown show states w/o underscores
+Add required asterisks to fields on modal forms
+When modals submit, don't redirect to project page, just close modal
+	Update: Modals don't redirect to project page, but they won't close either...
+[DONE] Fix date on adding a new task
+[DONE] FIGURE OUT HOW TO ADD REMOTE TO NEW TASK MODAL
+Have different modal headers for edit/new
+[DONE] Move modals to their own partials
+
+
+
+
+Questions
+Does archive page default to showing ALL projects? And then the dropdown is just a search?
+Can we delete projects?
+Do we need an owner for projects?

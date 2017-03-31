@@ -45,8 +45,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.2.3)
@@ -177,7 +175,6 @@ PLATFORMS
 DEPENDENCIES
   aasm
   better_errors
-  bootstrap-sass
   bootstrap-will_paginate
   byebug
   coffee-rails (~> 4.1.0)

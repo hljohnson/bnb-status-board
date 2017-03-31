@@ -38,8 +38,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.js { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to :index, notice: 'Project was successfully created.' }
+        format.js { render :template => 'projects/create' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }

@@ -1,21 +1,21 @@
 .modal-dialog{:role => "document"}
   .modal-content
     .modal-header
-      %h5#exampleModalLabel.modal-title New Task for #{@project.name}
+      %h5#exampleModalLabel.modal-title=@project.name
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
         %span{"aria-hidden" => "true"} ×
     
-    = simple_form_for ([@project, @task]), :remote => true do |f|
+    = simple_form_for ([@project, @task]), {:remote => true} do |f|
       .modal-body
         .form-group.row
           %label.col-2.col-form-label{:for => "example-text-input"} Description
           .col-10= f.text_field :description, :class => 'form-control'
         .form-group.row
           %label.col-2.col-form-label{:for => "example-date-input"} Owner
-          .col-10= f.select :owner_id, options_for_select(User.all.map { |s| [s.first_name, s.id]}), {:include_blank => true}, {:class => 'form-control'}
+          .col-10= f.select :owner_id, options_for_select(User.all.map { |s| [s.first_name, s.id]}, :selected => f.object.owner_id), {:include_blank => true}, {:class => 'form-control'}
         .form-group.row
           %label.col-2.col-form-label{:for => "example-url-input"} Due Date
-          .col-10= f.input :due_at, {:class => 'form-control'}
+          .col-10= f.text_field :due_at, {:class => 'form-control', :type => 'date'}
       .modal-footer
         = f.submit 'Save', class: "btn btn-green"
 

@@ -75,7 +75,7 @@ class TasksController < ApplicationController
 
   def update_state
     @task.incomplete? ? @task.mark_complete! : @task.mark_incomplete!
-    redirect_to :back
+    render json: {}
   end
 
 

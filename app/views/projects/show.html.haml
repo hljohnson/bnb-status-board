@@ -1,25 +1,3 @@
-/ %h1=@project.name
-/ %p=@project.aasm_state
-/ = link_to "Edit Project", edit_project_path(@project.id)
-/ = link_to "Create Task", new_project_task_path(@project)
-
-/ %table
-/ 	%thead
-/ 		%tr
-/ 			%th
-/ 			%th Description
-/ 			%th Owner
-/ 			%th Due Date
-/ 		%tbody
-/ 			- @project.tasks.each do |task|
-/ 				%tr
-/ 				%td= button_to "Mark as #{task.other_state}", update_state_project_task_path(id: task.id, project_id: @project.id), method: :put
-/ 				%td= task.description
-/ 				%td= link_to User.find(task.owner_id).first_name, user_path(task.owner_id)
-/ 				%td= task.due_at
-/ 				%td= link_to 'Edit', edit_project_task_path(id: task.id, project_id: @project.id)
-/ %br/
-
 .container
 	%h2.header-align=@project.name
 	%button.btn.btn-gray.header-align-btn
@@ -62,13 +40,13 @@
 						%tr.overdue
 							%th{:scope => "row"}
 								.checkbox
-								%input{:type => "checkbox", :value => ""}/
+								%input{:type => "checkbox", :task_id => task.id, :project_id => @project.id}/
 							%td=task.description
 							%td=User.find(task.owner_id).first_name
 							%td= task.due_at
 							%td
 								%button.btn.btn-secondary.btn-sm
-									= link_to 'EDIT TASK', edit_project_task_path(id: task.id, project_id: @project.id), {"data-target" => "#editTaskModal", "data-toggle" => "modal"}
+									= link_to 'EDIT TASK', edit_project_task_path(id: task.id, project_id: @project.id), {:remote => true,"data-target" => "#newTaskModal", "data-toggle" => "modal"}
 					
 					%tr
 						%td.top-row{:colspan => "4"}
@@ -79,7 +57,7 @@
 						%tr.completed-on-time
 							%th{:scope => "row"}
 								.checkbox
-								%input{:checked => "checked", :type => "checkbox", :value => ""}/
+								%input{:checked => "checked", :type => "checkbox", :task_id => task.id, :project_id => @project.id}/
 							%td=task.description
 							%td=User.find(task.owner_id).first_name
 							%td= task.due_at
@@ -110,67 +88,5 @@
 							%b Client
 						%td=@project.client
 
-	/ MODALS ----
-	/ modal for new project
-	#newTaskModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-		.modal-dialog{:role => "document"}
-			.modal-content
-				.modal-header
-					%h5#exampleModalLabel.modal-title New Task for Project Name
-					%button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-						%span{"aria-hidden" => "true"} ×
-				.modal-body
-					.form-group.row
-						%label.col-2.col-form-label{:for => "example-text-input"} Description
-						.col-10
-							%input#example-text-input.form-control{:type => "text"}/
-					.form-group.row
-						%label.col-2.col-form-label{:for => "example-date-input"} Due Date
-						.col-10
-							%input#example-date-input.form-control{:type => "date"}/
-					.form-group.row
-						%label.col-2.col-form-label{:for => "example-url-input"} Owner
-						.btn-group
-							%button.btn.btn-secondary.dropdown-toggle.btn-push-left{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-								Select
-							.dropdown-menu.dropdown-menu-right
-								%button.dropdown-item{:type => "button"} Nate
-								%button.dropdown-item{:type => "button"} Matt
-								%button.dropdown-item{:type => "button"} Ashley
-								%button.dropdown-item{:type => "button"} Hannah
-								%button.dropdown-item{:type => "button"} Will
-				.modal-footer
-					%button.btn.btn-green{:type => "button"} CREATE
 	/ modal for edit task
-	#editTaskModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-		.modal-dialog{:role => "document"}
-			.modal-content
-				.modal-header
-					%h5#exampleModalLabel.modal-title Edit Task for Project Name
-					%button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-						%span{"aria-hidden" => "true"} ×
-				.modal-body
-					.form-group.row
-						%label.col-2.col-form-label{:for => "example-text-input"} Description
-						.col-10
-							%input#example-text-input.form-control{:type => "text"}/
-					.form-group.row
-						%label.col-2.col-form-label{:for => "example-date-input"} Due Date
-						.col-10
-							%input#example-date-input.form-control{:type => "date"}/
-					.form-group.row
-						%label.col-2.col-form-label{:for => "example-url-input"} Owner
-						.btn-group
-							%button.btn.btn-secondary.dropdown-toggle.btn-push-left{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-								Select
-							.dropdown-menu.dropdown-menu-right
-								%button.dropdown-item{:type => "button"} Nate
-								%button.dropdown-item{:type => "button"} Matt
-								%button.dropdown-item{:type => "button"} Ashley
-								%button.dropdown-item{:type => "button"} Hannah
-								%button.dropdown-item{:type => "button"} Will
-				.modal-footer
-					%button.btn.btn-red{:type => "button"} DELETE TASK
-					%button.btn.btn-green{:type => "button"} SAVE
-
-
+	#newTaskModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
