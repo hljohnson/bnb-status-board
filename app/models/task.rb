@@ -22,9 +22,16 @@ class Task < ActiveRecord::Base
 		end
 
 	end
-	
-	def other_state
-		aasm.states(:permitted => true).map(&:name).first
-	end
 
+	def current_state
+		if incomplete? && (due_at > Time.now)
+		  "overdue"
+		elsif incomplete? && (due_at <= Time.now)
+		  "on-track"
+		elsif complete? && (due_at < completed_at)
+		  "completed-late"
+		else # complete and finished before due date
+		  "completed-on-time"
+		end
+	end
 end

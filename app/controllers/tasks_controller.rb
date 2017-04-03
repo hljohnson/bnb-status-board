@@ -74,7 +74,13 @@ class TasksController < ApplicationController
   end
 
   def update_state
-    @task.incomplete? ? @task.mark_complete! : @task.mark_incomplete!
+    if @task.incomplete?
+      @task.mark_complete!
+      @task.update(completed_at: Time.now)
+    else 
+      @task.mark_incomplete!
+      @task.update(completed_at: nil)
+    end
     render json: {}
   end
 

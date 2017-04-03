@@ -15,7 +15,7 @@
   / Card Block -----------------------------------------------------------
   #flex-container.row
     - @projects.each do |project|
-      .card.on-track.col-sm-5
+      .card.col-sm-5{:class => project.current_state}
         .card-header.card-header-inline
           %h3.card-header-inline
             %a=link_to project.name, project

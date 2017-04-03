@@ -1,12 +1,14 @@
-[DONEDONEDONEDONEDONE] Make checkboxes responsive (oh my that took forever)
 When clicking a checkbox, allow a user to click the line of text as well (can this be done?)
 Nav bar, span tag that controlled spacing on links
 Color of clickable project titles/unwanted underlining
 Black highlighting on navbar items
-Associate status colors with card header colors and task colors
+Fix ordering of tasks
 [DONE] Fix members section of specific project page
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
+[DONE] Associate status colors with card header colors and task colors
+[DONEDONEDONEDONEDONE] Make checkboxes responsive (oh my that took forever)
+[DONE] Update completed at time for tasks
 
 
 MODALS
@@ -28,3 +30,4 @@ Does archive page default to showing ALL projects? And then the dropdown is just
 Can we delete projects?
 Do we need an owner for projects?
 Do we need to add required asterisks to fields on modal forms?
+Should we be able to edit/see status of the project on the project show page?

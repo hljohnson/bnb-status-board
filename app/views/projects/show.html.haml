@@ -37,13 +37,13 @@
 					%th
 				%tbody
 					- @project.tasks.incomplete.each do |task|
-						%tr.overdue
+						%tr{:class => task.current_state}
 							%th{:scope => "row"}
 								.checkbox
 								%input{:type => "checkbox", :task_id => task.id, :project_id => @project.id}/
 							%td=task.description
 							%td=User.find(task.owner_id).first_name
-							%td= task.due_at
+							%td= task.due_at.strftime("%m/%d/%Y")
 							%td
 								%button.btn.btn-secondary.btn-sm
 									= link_to 'EDIT TASK', edit_project_task_path(id: task.id, project_id: @project.id), {:remote => true,"data-target" => "#newTaskModal", "data-toggle" => "modal"}
@@ -54,13 +54,13 @@
 								%br>/
 								Complete
 					- @project.tasks.complete.each do |task|
-						%tr.completed-on-time
+						%tr{:class => task.current_state}
 							%th{:scope => "row"}
 								.checkbox
 								%input{:checked => "checked", :type => "checkbox", :task_id => task.id, :project_id => @project.id}/
 							%td=task.description
 							%td=User.find(task.owner_id).first_name
-							%td= task.due_at
+							%td= task.due_at.strftime("%m/%d/%Y")
 							%td
 
 		#members.tab-pane{:role => "tabpanel"}

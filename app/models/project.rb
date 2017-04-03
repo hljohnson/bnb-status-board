@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+	default_scope { order(created_at: :desc) }
+
 	validates :name, presence: true, uniqueness: true
 
 	# Relationships
@@ -35,4 +37,10 @@ class Project < ActiveRecord::Base
 		end
 
 	end
+
+	def current_state
+		aasm_state.humanize.parameterize
+	end
+
+
 end
