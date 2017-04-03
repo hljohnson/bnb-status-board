@@ -10,11 +10,8 @@ Fix members section of specific project page
 
 
 MODALS
-Make modals work
-Make aasm dropdown show states w/o underscores
 Make modals close on 'x'
 Have different modal headers for edit/new
-Add required asterisks to fields on modal forms
 When modals submit, don't redirect to project page, just close modal
 	Update: Modals don't redirect to project page, but they won't close either...
 [DONE] Fix date on adding a new task
@@ -22,7 +19,7 @@ When modals submit, don't redirect to project page, just close modal
 [DONE] Move modals to their own partials
 [DONE] Errors reflect parent class (projects, not tasks)
 [DONE] Have due date default to 1 week in the future
-
+[DONE] Make aasm dropdown show states w/o underscores
 
 
 
@@ -30,3 +27,4 @@ Questions
 Does archive page default to showing ALL projects? And then the dropdown is just a search?
 Can we delete projects?
 Do we need an owner for projects?
+Do we need to add required asterisks to fields on modal forms?
