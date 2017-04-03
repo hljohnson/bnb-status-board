@@ -4,7 +4,7 @@ Nav bar, span tag that controlled spacing on links
 Color of clickable project titles/unwanted underlining
 Black highlighting on navbar items
 Associate status colors with card header colors and task colors
-Fix members section of specific project page
+[DONE] Fix members section of specific project page
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
 
