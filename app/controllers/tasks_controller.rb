@@ -42,7 +42,7 @@ class TasksController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
-        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @project }); render :template => 'shared/modal_errors' }
+        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @task }); render :template => 'shared/modal_errors' }
       end
     end
   end
@@ -58,7 +58,7 @@ class TasksController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
-        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @project }); render :template => 'shared/modal_errors' }
+        format.js { @partial = render_to_string(:partial => 'shared/modal_errors', :locals => { :object => @task }); render :template => 'shared/modal_errors' }
       end
     end
   end

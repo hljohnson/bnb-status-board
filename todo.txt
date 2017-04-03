@@ -1,10 +1,10 @@
 [DONEDONEDONEDONEDONE] Make checkboxes responsive (oh my that took forever)
+When clicking a checkbox, allow a user to click the line of text as well (can this be done?)
 Nav bar, span tag that controlled spacing on links
 Color of clickable project titles/unwanted underlining
 Black highlighting on navbar items
 Associate status colors with card header colors and task colors
 Fix members section of specific project page
-Make modals close on 'x'
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
 
@@ -12,13 +12,16 @@ Make modals close on 'x'
 MODALS
 Make modals work
 Make aasm dropdown show states w/o underscores
+Make modals close on 'x'
+Have different modal headers for edit/new
 Add required asterisks to fields on modal forms
 When modals submit, don't redirect to project page, just close modal
 	Update: Modals don't redirect to project page, but they won't close either...
 [DONE] Fix date on adding a new task
 [DONE] FIGURE OUT HOW TO ADD REMOTE TO NEW TASK MODAL
-Have different modal headers for edit/new
 [DONE] Move modals to their own partials
+[DONE] Errors reflect parent class (projects, not tasks)
+[DONE] Have due date default to 1 week in the future
 
 
 

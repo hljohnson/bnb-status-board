@@ -32,6 +32,10 @@ gem 'will_paginate' #,                '3.0.4' # https://github.com/mislav/will_p
 gem 'haml'
 gem 'font-awesome-rails'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

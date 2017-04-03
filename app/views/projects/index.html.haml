@@ -2,7 +2,7 @@
   %h2.header-align Projects
   / Button trigger modal
   %button.btn.btn-gray.header-align-btn
-    =link_to 'New Project', new_project_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#createNewModal'}
+    =link_to 'New Project', new_project_path, {:remote => true, 'data-toggle' =>  "modal", 'data-animation' => "false",'data-target' => '#createNewModal'}
   %hr/
   / Key ----------------------------------------------------------------
   %p.project-key
@@ -21,8 +21,8 @@
             %a=link_to project.name, project
           .card-header-edit
             %button.btn.btn-link.btn-link-override
-              =link_to edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#createNewModal'} do
-                %i.fa.fa-pencil.fa-2x{"aria-hidden" => "true"}
+              =link_to edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-animation' => "false", 'data-target' => '#createNewModal'} do
+                %i.fa.fa-pencil.fa-2x{"aria-hidden" => "true", 'data-animation' => "false"}
         .card-block
           .checkbox
             %button.btn.btn-link.btn-link-override{"data-target" => "#newTaskModal", "data-toggle" => "modal", :type => "button"}
@@ -39,6 +39,6 @@
   / /flex-container
 / /.container
 
-#newTaskModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-#createNewModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog",:tabindex => "-1"}
+#newTaskModal.modal{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+#createNewModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog",:tabindex => "-1"}
 

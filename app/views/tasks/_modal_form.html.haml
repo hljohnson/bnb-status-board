@@ -15,7 +15,7 @@
           .col-10= f.select :owner_id, options_for_select(User.all.map { |s| [s.first_name, s.id]}, :selected => f.object.owner_id), {:include_blank => true}, {:class => 'form-control'}
         .form-group.row
           %label.col-2.col-form-label{:for => "example-url-input"} Due Date
-          .col-10= f.text_field :due_at, {:class => 'form-control', :type => 'date'}
+          .col-10= f.input :due_at, :as => :date, label: false
       .modal-footer
         = f.submit 'Save', class: "btn btn-green"
 
