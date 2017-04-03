@@ -3,6 +3,7 @@ Nav bar, span tag that controlled spacing on links
 Color of clickable project titles/unwanted underlining
 Black highlighting on navbar items
 Fix ordering of tasks
+Show more dropdown on tasks
 [DONE] Fix members section of specific project page
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
@@ -22,7 +23,6 @@ When modals submit, don't redirect to project page, just close modal
 [DONE] Errors reflect parent class (projects, not tasks)
 [DONE] Have due date default to 1 week in the future
 [DONE] Make aasm dropdown show states w/o underscores
-
 
 
 Questions
