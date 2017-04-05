@@ -4,6 +4,7 @@ Color of clickable project titles/unwanted underlining
 Black highlighting on navbar items
 Fix ordering of tasks
 Show more dropdown on tasks
+Highlight new tasks added
 [DONE] Fix members section of specific project page
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
@@ -13,10 +14,10 @@ Show more dropdown on tasks
 
 
 MODALS
-Make modals close on 'x'
-Have different modal headers for edit/new
-When modals submit, don't redirect to project page, just close modal
-	Update: Modals don't redirect to project page, but they won't close either...
+[DONE] Make modals close on 'x'
+[DONE] Have different modal headers for edit/new
+[DONE] Dynamically update page with save
+[DONE[ When modals submit, don't redirect to project page, just close modal
 [DONE] Fix date on adding a new task
 [DONE] FIGURE OUT HOW TO ADD REMOTE TO NEW TASK MODAL
 [DONE] Move modals to their own partials
@@ -31,3 +32,5 @@ Can we delete projects?
 Do we need an owner for projects?
 Do we need to add required asterisks to fields on modal forms?
 Should we be able to edit/see status of the project on the project show page?
+Can users add tasks to their "my tasks" page?
+When we mark tasks complete, should the automatically get moved down to the "completed section"? (i.e. what if you accidentally mark a task as complete)

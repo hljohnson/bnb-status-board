@@ -1,3 +1,5 @@
-window.alert("Hello?")
-$('#createNewModal').modal('hide');
-window.alert("Is anyone there?")
+$('#createNewModal').modal('toggle');
+
+$('#flex-container').prepend("<%= j render(partial: 'projects/projects_partial', locals: {project: @project}) %>");
+
+

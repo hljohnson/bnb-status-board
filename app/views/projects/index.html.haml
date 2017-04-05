@@ -15,30 +15,11 @@
   / Card Block -----------------------------------------------------------
   #flex-container.row
     - @projects.each do |project|
-      .card.col-sm-5{:class => project.current_state}
-        .card-header.card-header-inline
-          %h3.card-header-inline
-            %a=link_to project.name, project
-          .card-header-edit
-            %button.btn.btn-link.btn-link-override
-              =link_to edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-animation' => "false", 'data-target' => '#createNewModal'} do
-                %i.fa.fa-pencil.fa-2x{"aria-hidden" => "true", 'data-animation' => "false"}
-        .card-block
-          .checkbox
-            %button.btn.btn-link.btn-link-override{"data-target" => "#newTaskModal", "data-toggle" => "modal", :type => "button"}
-              =link_to new_project_task_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#newTaskModal'} do
-                %i.fa.fa-plus{"aria-hidden" => "true"}
-                %label.card-task Create New Task
-          - project.tasks.each do |task|
-            .checkbox
-              %input{:type => "checkbox", :task_id => task.id, :project_id => project.id, checked: task.complete?, :remote => true}
-              %label.card-task=task.description
-      / card block
-    / card
+      = render partial: 'projects/projects_partial', locals: {project: project}
 
   / /flex-container
 / /.container
 
-#newTaskModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-#createNewModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog",:tabindex => "-1"}
+#newTaskModal.modal.hide{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+#createNewModal.modal.hide{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog",:tabindex => "-1"}
 

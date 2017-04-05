@@ -1,0 +1,3 @@
+$('#newTaskModal').modal('toggle');
+
+$('#task<%= @task.id %>').replaceWith("<%= j render(partial: 'tasks/extended_partial', locals: {project: @project, task: @task}) %>");

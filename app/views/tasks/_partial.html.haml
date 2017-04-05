@@ -1,0 +1,3 @@
+.checkbox
+	%input{:type => "checkbox", :task_id => task.id, :project_id => project.id, checked: task.complete?, :remote => true}
+	%label.card-task=task.description

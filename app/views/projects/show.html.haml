@@ -35,33 +35,16 @@
 					%th Owner
 					%th Due Date
 					%th
-				%tbody
+				%tbody#tasks_list
 					- @project.tasks.incomplete.each do |task|
-						%tr{:class => task.current_state}
-							%th{:scope => "row"}
-								.checkbox
-								%input{:type => "checkbox", :task_id => task.id, :project_id => @project.id}/
-							%td=task.description
-							%td=User.find(task.owner_id).first_name
-							%td= task.due_at.strftime("%m/%d/%Y")
-							%td
-								%button.btn.btn-secondary.btn-sm
-									= link_to 'EDIT TASK', edit_project_task_path(id: task.id, project_id: @project.id), {:remote => true,"data-target" => "#newTaskModal", "data-toggle" => "modal"}
-					
+						=render partial: 'tasks/extended_partial', locals: { project: @project, task: task}
 					%tr
 						%td.top-row{:colspan => "4"}
 							%h4
 								%br>/
 								Complete
 					- @project.tasks.complete.each do |task|
-						%tr{:class => task.current_state}
-							%th{:scope => "row"}
-								.checkbox
-								%input{:checked => "checked", :type => "checkbox", :task_id => task.id, :project_id => @project.id}/
-							%td=task.description
-							%td=User.find(task.owner_id).first_name
-							%td= task.due_at.strftime("%m/%d/%Y")
-							%td
+						=render partial: 'tasks/extended_partial', locals: { project: @project, task: task}
 
 		#members.tab-pane{:role => "tabpanel"}
 			%br/
