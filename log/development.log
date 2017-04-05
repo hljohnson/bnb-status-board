@@ -1371,3 +1371,280 @@ Processing by TasksController#edit as JS
   Rendered tasks/_modal_form.html.haml (7.0ms)
   Rendered tasks/edit.js.erb (10.4ms)
 Completed 200 OK in 33ms (Views: 21.1ms | ActiveRecord: 2.7ms)
+
+
+Started PUT "/projects/32/tasks/62/update_state" for 127.0.0.1 at 2017-04-05 15:28:57 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#update_state as */*
+  Parameters: {"project_id"=>"32", "id"=>"62"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1  ORDER BY "projects"."created_at" DESC LIMIT 1[0m  [["id", 32]]
+  [1m[35mTask Load (0.4ms)[0m  SELECT  "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."id" = $2 LIMIT 1  [["project_id", 32], ["id", 62]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.6ms)[0m  SELECT  1 AS one FROM "tasks" WHERE ("tasks"."description" = 'Hihglihgted task!' AND "tasks"."id" != 62) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "tasks" SET "aasm_state" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3[0m  [["aasm_state", "complete"], ["updated_at", "2017-04-05 20:28:58.032589"], ["id", 62]]
+  [1m[35m (12.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT  1 AS one FROM "tasks" WHERE ("tasks"."description" = 'Hihglihgted task!' AND "tasks"."id" != 62) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "tasks" SET "completed_at" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3[0m  [["completed_at", "2017-04-05 20:28:58.049422"], ["updated_at", "2017-04-05 20:28:58.051460"], ["id", 62]]
+  [1m[35m (5.1ms)[0m  COMMIT
+Completed 200 OK in 179ms (Views: 0.4ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/projects/32" for 127.0.0.1 at 2017-04-05 15:28:58 -0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1  ORDER BY "projects"."created_at" DESC LIMIT 1  [["id", 32]]
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'incomplete'[0m  [["project_id", 32]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'complete'  [["project_id", 32]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (9.7ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT DISTINCT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."owner_id" WHERE "tasks"."project_id" = $1  [["project_id", 32]]
+  [1m[36mTask Load (0.5ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."owner_id" IN (2)[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 32]]
+  Rendered projects/show.html.haml within layouts/application (51.6ms)
+Completed 200 OK in 378ms (Views: 361.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/projects/32" for 127.0.0.1 at 2017-04-05 15:29:33 -0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.6ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1  ORDER BY "projects"."created_at" DESC LIMIT 1  [["id", 32]]
+  [1m[36mTask Load (0.6ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'incomplete'[0m  [["project_id", 32]]
+  [1m[35mTask Load (0.4ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'complete'  [["project_id", 32]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (5.2ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT DISTINCT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."owner_id" WHERE "tasks"."project_id" = $1  [["project_id", 32]]
+  [1m[36mTask Load (0.7ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."owner_id" IN (2)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 32]]
+  Rendered projects/show.html.haml within layouts/application (22.9ms)
+Completed 200 OK in 61ms (Views: 49.2ms | ActiveRecord: 4.6ms)
+
+
+Started PUT "/projects/32/tasks/62/update_state" for 127.0.0.1 at 2017-04-05 15:29:35 -0500
+Processing by TasksController#update_state as */*
+  Parameters: {"project_id"=>"32", "id"=>"62"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1  ORDER BY "projects"."created_at" DESC LIMIT 1  [["id", 32]]
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."id" = $2 LIMIT 1[0m  [["project_id", 32], ["id", 62]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tasks" WHERE ("tasks"."description" = 'Hihglihgted task!' AND "tasks"."id" != 62) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "tasks" SET "aasm_state" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3  [["aasm_state", "incomplete"], ["updated_at", "2017-04-05 20:29:35.464743"], ["id", 62]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "tasks" WHERE ("tasks"."description" = 'Hihglihgted task!' AND "tasks"."id" != 62) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "tasks" SET "completed_at" = $1, "updated_at" = $2 WHERE "tasks"."id" = $3  [["completed_at", nil], ["updated_at", "2017-04-05 20:29:35.471064"], ["id", 62]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/projects/32" for 127.0.0.1 at 2017-04-05 15:29:35 -0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1  ORDER BY "projects"."created_at" DESC LIMIT 1[0m  [["id", 32]]
+  [1m[35mTask Load (0.4ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'incomplete'  [["project_id", 32]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.9ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'complete'  [["project_id", 32]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT DISTINCT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."owner_id" WHERE "tasks"."project_id" = $1[0m  [["project_id", 32]]
+  [1m[35mTask Load (0.7ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."owner_id" IN (2)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 32]]
+  Rendered projects/show.html.haml within layouts/application (13.3ms)
+Completed 200 OK in 46ms (Views: 40.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2017-04-05 15:29:39 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  ORDER BY "projects"."created_at" DESC[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 32]]
+  Rendered tasks/_partial.html.haml (1.2ms)
+  Rendered projects/_projects_partial.html.haml (112.5ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 31]]
+  Rendered projects/_projects_partial.html.haml (2.0ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 30]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 29]]
+  Rendered projects/_projects_partial.html.haml (1.6ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 28]]
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.1ms)
+  Rendered tasks/_partial.html.haml (0.1ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered projects/_projects_partial.html.haml (46.2ms)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 27]]
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.5ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered projects/_projects_partial.html.haml (37.8ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 26]]
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered projects/_projects_partial.html.haml (6.5ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 25]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 24]]
+  Rendered projects/_projects_partial.html.haml (1.8ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 23]]
+  Rendered projects/_projects_partial.html.haml (1.7ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 22]]
+  Rendered projects/_projects_partial.html.haml (2.2ms)
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 21]]
+  Rendered projects/_projects_partial.html.haml (2.3ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 20]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 19]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 18]]
+  Rendered projects/_projects_partial.html.haml (2.0ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 17]]
+  Rendered projects/_projects_partial.html.haml (2.2ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 16]]
+  Rendered projects/_projects_partial.html.haml (2.0ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 15]]
+  Rendered projects/_projects_partial.html.haml (2.1ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 14]]
+  Rendered projects/_projects_partial.html.haml (1.8ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 13]]
+  Rendered projects/_projects_partial.html.haml (2.1ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 12]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 11]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 10]]
+  Rendered projects/_projects_partial.html.haml (3.2ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 9]]
+  Rendered projects/_projects_partial.html.haml (1.8ms)
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 8]]
+  Rendered projects/_projects_partial.html.haml (1.9ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 7]]
+  Rendered projects/_projects_partial.html.haml (2.0ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 6]]
+  Rendered tasks/_partial.html.haml (0.7ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered projects/_projects_partial.html.haml (6.3ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 5]]
+  Rendered projects/_projects_partial.html.haml (2.1ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 4]]
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.5ms)
+  Rendered projects/_projects_partial.html.haml (8.6ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 3]]
+  Rendered projects/_projects_partial.html.haml (2.2ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1  [["project_id", 2]]
+  Rendered tasks/_partial.html.haml (0.5ms)
+  Rendered tasks/_partial.html.haml (0.4ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.7ms)
+  Rendered tasks/_partial.html.haml (0.3ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered projects/_projects_partial.html.haml (17.2ms)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered tasks/_partial.html.haml (1.1ms)
+  Rendered tasks/_partial.html.haml (0.8ms)
+  Rendered tasks/_partial.html.haml (1.0ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (0.2ms)
+  Rendered tasks/_partial.html.haml (6.2ms)
+  Rendered tasks/_partial.html.haml (0.8ms)
+  Rendered tasks/_partial.html.haml (0.5ms)
+  Rendered projects/_projects_partial.html.haml (28.0ms)
+  Rendered projects/index.html.haml within layouts/application (358.8ms)
+Completed 200 OK in 413ms (Views: 400.6ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/projects/27" for 127.0.0.1 at 2017-04-05 15:29:41 -0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"27"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1  ORDER BY "projects"."created_at" DESC LIMIT 1[0m  [["id", 27]]
+  [1m[35mTask Load (1.0ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'incomplete'  [["project_id", 27]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (2.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (3.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (3.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.3ms)
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1 AND "tasks"."aasm_state" = 'complete'  [["project_id", 27]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tasks/_extended_partial.html.haml (1.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered tasks/_extended_partial.html.haml (1.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT DISTINCT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."owner_id" WHERE "tasks"."project_id" = $1[0m  [["project_id", 27]]
+  [1m[35mTask Load (0.6ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."owner_id" IN (2, 1)
+  [1m[36mTask Load (0.9ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = $1[0m  [["project_id", 27]]
+  Rendered projects/show.html.haml within layouts/application (90.5ms)
+Completed 200 OK in 136ms (Views: 125.4ms | ActiveRecord: 5.1ms)

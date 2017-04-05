@@ -1,7 +1,7 @@
 %tr{:class => task.current_state, :id => "task#{task.id}"}
 	%th{:scope => "row"}
 		.checkbox
-		%input{:type => "checkbox", :task_id => task.id, :project_id => project.id}/
+		%input{:type => "checkbox", :task_id => task.id, :project_id => project.id,checked: task.complete?}/
 	%td=task.description
 	%td=User.find(task.owner_id).first_name
 	%td= task.due_at.strftime("%m/%d/%Y")

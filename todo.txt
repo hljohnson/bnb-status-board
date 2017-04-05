@@ -5,6 +5,7 @@ Black highlighting on navbar items
 Fix ordering of tasks
 Show more dropdown on tasks
 Highlight new tasks added
+Add searching!
 [DONE] Fix members section of specific project page
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
