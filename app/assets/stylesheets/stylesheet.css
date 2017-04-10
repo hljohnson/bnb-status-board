@@ -8,10 +8,24 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: #000000;
+  text-decoration: none;
 }
+
+a:visited {
+  color: #000000;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #666666;
+  background-color:transparent;
+
+}
+
 p, div {
     font-family: 'Avenir';
 }
+
 
 
 /* Archive -------------------------------------------------------------------*/
@@ -66,7 +80,10 @@ p, div {
   font-size: 40px;
 }
 
-.navbar a { color: #000 }
+.navbar a {
+  color: #000;
+  padding-right: 20px;
+}
 
 .nav-link-shift {
   margin-left: 10px;
