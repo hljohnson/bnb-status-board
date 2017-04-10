@@ -1,7 +1,7 @@
 .container
 	%h2.header-align=@project.name
 	%button.btn.btn-gray.header-align-btn
-		=link_to "CREATE TASK", new_project_task_path(@project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#newTaskModal'} 
+		=link_to "CREATE TASK", new_project_task_path(@project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#newTaskModal'}
 	%hr/
 	/ Tabbed menu
 	/ Nav tabs
@@ -43,6 +43,7 @@
 							%h4
 								%br>/
 								Complete
+					%tr
 					- @project.tasks.complete.each do |task|
 						=render partial: 'tasks/extended_partial', locals: { project: @project, task: task}
 
@@ -65,7 +66,7 @@
 						%td.top-row
 							%b Owner
 						%td.top-row
-							No one 
+							No one
 					%tr
 						%td
 							%b Client
