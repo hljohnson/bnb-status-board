@@ -8,6 +8,10 @@ class Task < ActiveRecord::Base
 	belongs_to :project
 	belongs_to :user, class_name: "User", foreign_key: "owner_id"
 
+	default_value_for :due_at do
+		Time.now + 7.days
+	end
+
 	include AASM
 	aasm do
 		state :complete

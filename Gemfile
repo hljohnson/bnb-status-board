@@ -31,6 +31,7 @@ gem 'will_paginate' #,                '3.0.4' # https://github.com/mislav/will_p
   gem 'simple_form', "~> 3.2.1"
 gem 'haml'
 gem 'font-awesome-rails'
+gem "default_value_for", "~> 3.0.0"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

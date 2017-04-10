@@ -6,6 +6,7 @@ Fix ordering of tasks
 Show more dropdown on tasks
 Highlight new tasks added
 Add searching!
+[DONE] Fix default due date (currently 7 days from when I created migration, not 7 days from current date)
 [DONE] Fix members section of specific project page
 [DONE] Add archive page
 [DONE] Don't let users access unless they are logged in
