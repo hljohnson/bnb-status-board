@@ -28,9 +28,9 @@ class Task < ActiveRecord::Base
 	end
 
 	def current_state
-		if incomplete? && (due_at > Time.now)
+		if incomplete? && (due_at < Time.now)
 		  "overdue"
-		elsif incomplete? && (due_at <= Time.now)
+		elsif incomplete? && (due_at >= Time.now)
 		  "on-track"
 		elsif complete? && (due_at < completed_at)
 		  "completed-late"
