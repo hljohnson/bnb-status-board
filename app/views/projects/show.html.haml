@@ -43,7 +43,7 @@
 							%h4
 								%br>/
 								Complete
-					%tr
+					
 					- @project.tasks.complete.each do |task|
 						=render partial: 'tasks/extended_partial', locals: { project: @project, task: task}
 
