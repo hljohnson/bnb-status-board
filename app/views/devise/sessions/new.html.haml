@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title StatusBoard
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+
+  %nav.navbar.navbar-toggleable-md.fixed-top
+    .container
+      %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      %a.navbar-brand{:href => "#"} Voyage
+      
+%h2 Log in
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-inputs
+    = f.input :email, required: false, autofocus: true
+    = f.input :password, required: false
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, "Log in"
+= render "devise/shared/links"
