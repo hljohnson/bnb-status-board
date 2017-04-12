@@ -15,6 +15,7 @@ class Project < ActiveRecord::Base
 		state :in_trouble
 		state :in_maintenance
 		state :waiting_on_client
+		state :complete
 
 		event :set_on_track do
 			transitions :to => :on_track
@@ -34,6 +35,10 @@ class Project < ActiveRecord::Base
 
 		event :set_waiting_on_client do
 			transitions :to => :waiting_on_client
+		end
+
+		event :set_complete do
+			transitions :to => :complete
 		end
 
 	end

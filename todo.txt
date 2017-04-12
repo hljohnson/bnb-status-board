@@ -1,11 +1,10 @@
-When clicking a checkbox, allow a user to click the line of text as well (can this be done?)
-Nav bar, span tag that controlled spacing on links
-Color of clickable project titles/unwanted underlining
-Black highlighting on navbar items
 Fix ordering of tasks
 Show more dropdown on tasks
 Highlight new tasks added
 Add searching!
+[DONE] Nav bar, span tag that controlled spacing on links
+[DONE] Color of clickable project titles/unwanted underlining
+[DONE] Black highlighting on navbar items
 [DONE] Fix default due date (currently 7 days from when I created migration, not 7 days from current date)
 [DONE] Fix members section of specific project page
 [DONE] Add archive page
@@ -19,7 +18,7 @@ MODALS
 [DONE] Make modals close on 'x'
 [DONE] Have different modal headers for edit/new
 [DONE] Dynamically update page with save
-[DONE[ When modals submit, don't redirect to project page, just close modal
+[DONE] When modals submit, don't redirect to project page, just close modal
 [DONE] Fix date on adding a new task
 [DONE] FIGURE OUT HOW TO ADD REMOTE TO NEW TASK MODAL
 [DONE] Move modals to their own partials
@@ -30,14 +29,14 @@ MODALS
 
 QUESTIONS
 Does archive page default to showing ALL projects? And then the dropdown is just a search?
+	A: Default to showing only search bar
 Can we delete projects?
 Do we need an owner for projects?
 Do we need to add required asterisks to fields on modal forms?
 Should we be able to edit/see status of the project on the project show page?
 Can users add tasks to their "my tasks" page?
-When we mark tasks complete, should the automatically get moved down to the "completed section"? (i.e. what if you accidentally mark a task as complete)
 
 
 REQUESTS
-Mark an entire project as complete -> then show it on archive
+[DONE] Mark an entire project as complete -> then show it on archive
 

@@ -1,11 +1,11 @@
 %tr{:class => task.current_state, :id => "task#{task.id}"}
 	%th{:scope => "row"}
 		.checkbox
-		%input{:type => "checkbox", :task_id => task.id, :project_id => project.id,checked: task.complete?}/
+		%input{:type => "checkbox", :task_id => task.id, :project_id => project.id,checked: task.complete?, disabled: project.complete?}/
 	%td=task.description
 	%td=User.find(task.owner_id).first_name
 	%td= task.due_at.strftime("%m/%d/%Y")
 	%td
-		- if task.incomplete?
+		- if task.incomplete? && !project.complete?
 			%button.btn.btn-secondary.btn-sm
 				= link_to 'EDIT TASK', edit_project_task_path(id: task.id, project_id: project.id), {:remote => true,"data-target" => "#newTaskModal", "data-toggle" => "modal"}
