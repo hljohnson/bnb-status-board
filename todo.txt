@@ -28,7 +28,7 @@ MODALS
 [DONE] Make aasm dropdown show states w/o underscores
 
 
-Questions
+QUESTIONS
 Does archive page default to showing ALL projects? And then the dropdown is just a search?
 Can we delete projects?
 Do we need an owner for projects?
@@ -36,3 +36,8 @@ Do we need to add required asterisks to fields on modal forms?
 Should we be able to edit/see status of the project on the project show page?
 Can users add tasks to their "my tasks" page?
 When we mark tasks complete, should the automatically get moved down to the "completed section"? (i.e. what if you accidentally mark a task as complete)
+
+
+REQUESTS
+Mark an entire project as complete -> then show it on archive
+
