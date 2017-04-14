@@ -1,7 +1,9 @@
-Fix ordering of tasks
+[DONE] Fix ordering of tasks
+	- Ended up only showing incomplete tasks
 Show more dropdown on tasks
 Highlight new tasks added
 Add searching!
+Archive page
 [DONE] Nav bar, span tag that controlled spacing on links
 [DONE] Color of clickable project titles/unwanted underlining
 [DONE] Black highlighting on navbar items

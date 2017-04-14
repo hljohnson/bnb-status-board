@@ -12,5 +12,5 @@
         =link_to new_project_task_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#newTaskModal'} do
           %i.fa.fa-plus{"aria-hidden" => "true"}
           %label.card-task Create New Task
-      - project.tasks.each do |task|
+      - project.tasks.incomplete.each do |task|
         = render partial: 'tasks/partial', locals: {task: task, project: project}
