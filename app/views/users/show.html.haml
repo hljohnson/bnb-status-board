@@ -17,7 +17,6 @@
 						%a=link_to project.name, project
 				.card-block
 					%p.card-text
-						- project.tasks.select {|t| t.owner_id == @user.id}.each do |task|
-							.checkbox
-								%input{:type => "checkbox", :task_id => task.id, :project_id => project.id, :checked => task.complete?}
-								%label.card-task=task.description
+						- project.tasks.select {|t| t.owner_id == @user.id && (t.incomplete? || (t.complete? && t.completed_at > Time.now - 2.weeks ))}.each do |task|
+							= render partial: 'tasks/partial', locals: {task: task, project: project}
+

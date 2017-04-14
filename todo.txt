@@ -1,3 +1,10 @@
+UPDATES - 4/4/17
+My tasks and project index only show incomplete tasks and tasks completed in last 2 weeks
+Projects can now have a status as "complete" and they will no longer show in the project index
+	- As of now, projects marked complete cannot be unmarked as complete
+Archive page works
+	- Only shows projects that have been marked as complete
+
 Fix ordering of tasks
 Highlight new tasks added
 Add searching!
@@ -13,8 +20,7 @@ Add searching!
 [DONEDONEDONEDONEDONE] Make checkboxes responsive (oh my that took forever)
 [DONE] Update completed at time for tasks
 [DONE] Show more dropdown on tasks
-	- Ended up only showing incomplete tasks
-
+	- show incomplete and tasks completed in last 2 weeks
 
 MODALS
 [DONE] Make modals close on 'x'
@@ -28,7 +34,6 @@ MODALS
 [DONE] Have due date default to 1 week in the future
 [DONE] Make aasm dropdown show states w/o underscores
 
-
 QUESTIONS
 Does archive page default to showing ALL projects? And then the dropdown is just a search?
 	A: Default to showing only search bar
@@ -37,7 +42,6 @@ Do we need an owner for projects?
 Do we need to add required asterisks to fields on modal forms?
 Should we be able to edit/see status of the project on the project show page?
 Can users add tasks to their "my tasks" page?
-
 
 REQUESTS
 [DONE] Mark an entire project as complete -> then show it on archive
