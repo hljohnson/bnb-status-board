@@ -1,0 +1,1 @@
+$('#project').html("<%= escape_javascript(render :partial => 'projects/project_show', locals: { project: @project, users: @users, tasks: @tasks }) %>");

@@ -1,0 +1,13 @@
+.container
+	%h2.header-align Archive
+	%hr/
+	.btn-group
+		%button.btn.btn-secondary.dropdown-toggle.dropdown-override#project-select-btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", "data-animation" => "false", :type => "button"}
+			Select Project
+		.dropdown-menu
+			- @projects.each do |project|
+				%button.dropdown-item{:type => "button"}=link_to project.name, archive_path(project.id), :remote => true
+	%br/	
+	%br/
+
+#project

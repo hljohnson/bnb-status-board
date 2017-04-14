@@ -1,9 +1,7 @@
-[DONE] Fix ordering of tasks
-	- Ended up only showing incomplete tasks
-Show more dropdown on tasks
+Fix ordering of tasks
 Highlight new tasks added
 Add searching!
-Archive page
+[DONE] Archive page
 [DONE] Nav bar, span tag that controlled spacing on links
 [DONE] Color of clickable project titles/unwanted underlining
 [DONE] Black highlighting on navbar items
@@ -14,6 +12,8 @@ Archive page
 [DONE] Associate status colors with card header colors and task colors
 [DONEDONEDONEDONEDONE] Make checkboxes responsive (oh my that took forever)
 [DONE] Update completed at time for tasks
+[DONE] Show more dropdown on tasks
+	- Ended up only showing incomplete tasks
 
 
 MODALS
