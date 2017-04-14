@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-	validates :description, presence: true, uniqueness: true
+	validates :description, presence: true
 	validates :project_id, presence: true
 	validates :owner_id, presence: true
 	validates :due_at, presence: true
