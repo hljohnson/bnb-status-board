@@ -1,5 +1,6 @@
 UPDATES - 4/4/17
 My tasks and project index only show incomplete tasks and tasks completed in last 2 weeks
+Default due date for tasks is 1 week in future
 Projects can now have a status as "complete" and they will no longer show in the project index
 	- As of now, projects marked complete cannot be unmarked as complete
 Archive page works

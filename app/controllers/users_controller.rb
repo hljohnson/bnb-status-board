@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@projects = @user.projects.includes(:tasks)
+		@projects = @user.projects.includes(:tasks).where.not(aasm_state: :complete)
 	end
 
 	private
