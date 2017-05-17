@@ -1,7 +1,1 @@
 $('#newTaskModal').modal('toggle');
-
-
-$('#tasks_for_<%= @project.id %>').append("<%= j render(partial: 'tasks/partial', locals: {project: @project, task: @task}) %>");
-$('#tasks_for_<%= @project.id %>').addClass('flash');
-
-$('#tasks_list').prepend("<%= j render(partial: 'tasks/extended_partial', locals: {project: @project, task: @task}) %>");

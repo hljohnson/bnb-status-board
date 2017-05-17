@@ -1,4 +1,4 @@
-.card.col-sm-5{:class => project.current_state, :id => "project#{project.id}"}
+.card.col-sm-5.project{:class => project.current_state, :id => "project#{project.id}", data: { id: project.id } }
   .card-header.card-header-inline
     %h3.card-header-inline
       %a=link_to project.name, project

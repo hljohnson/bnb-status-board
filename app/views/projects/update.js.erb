@@ -1,5 +1,2 @@
 $('#createNewModal').modal('toggle');
 
-$('#project<%= @project.id %>').replaceWith("<%= j render(partial: 'projects/projects_partial', locals: {project: @project}) %>");
-
-
