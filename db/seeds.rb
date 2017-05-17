@@ -8,6 +8,11 @@
 
 
 User.create( first_name: "Ashley", last_name: "Hutton", email: "ashleyhutton119@gmail.com", password: "password")
+User.create( first_name: "Hannah", last_name: "Johnson", email: "hannah@gmail.com", password: "password")
+User.create( first_name: "Matt", last_name: "Kirkland", email: "matt@brandnewbox.com", password: "password")
+User.create( first_name: "Josh", last_name: "Fike", email: "josh@brandnewbox.com", password: "password")
+User.create( first_name: "Nate", last_name: "Clark", email: "nathan@brandnewbox.com", password: "password")
+User.create( first_name: "Will", last_name: "Carey", email: "will@brandnewbox.com", password: "password")
 
 Project.create( name: 'Cola', owner_id: User.first.id)
 Project.create( name: 'TASN', owner_id: User.first.id)
@@ -19,9 +24,6 @@ Task.create( description: "Give mysefl a pat on the back", project_id: Project.f
 Task.create( description: "Implement new feature", project_id: Project.last.id, owner_id: User.first.id, due_at: DateTime.now)
 Task.create( description: "Fix the bug", project_id: Project.last.id, owner_id: User.first.id, due_at: DateTime.now)
 Task.create( description: "Conference call with Sally", project_id: Project.last.id, owner_id: User.first.id, due_at: DateTime.now)
-
-
-User.create( first_name: "Hannah", last_name: "Johnson", email: "hannah@gmail.com", password: "password")
 
 Task.create( description: "Meet with Matt about designs", project_id: Project.first.id, owner_id: User.last.id, due_at: DateTime.now)
 Task.create( description: "Finish work", project_id: Project.first.id, owner_id: User.last.id, due_at: DateTime.now)
