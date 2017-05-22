@@ -55,6 +55,8 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
+        ProjectChannel.broadcast_to(@project, ApplicationController.render(partial: 'projects/projects_partial', locals: { project: @project }))
+
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
         format.js { render :template => 'projects/update' }

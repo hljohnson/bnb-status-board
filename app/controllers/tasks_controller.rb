@@ -36,6 +36,8 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        ProjectChannel.broadcast_to(@project, ApplicationController.render(partial: 'projects/projects_partial', locals: { project: @project }))
+        
         format.html { redirect_to @project, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @project }
         format.js { render :template => 'tasks/create' }
@@ -52,6 +54,8 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
+        ProjectChannel.broadcast_to(@project, ApplicationController.render(partial: 'projects/projects_partial', locals: { project: @project }))
+
         format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
         format.js { render :template => 'tasks/update' }
@@ -81,6 +85,10 @@ class TasksController < ApplicationController
       @task.mark_incomplete!
       @task.update(completed_at: nil)
     end
+
+    project = @task.project
+    ProjectChannel.broadcast_to(project, ApplicationController.render(partial: 'projects/projects_partial', locals: { project: project }))
+
     render json: {}
   end
 
