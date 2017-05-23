@@ -19,7 +19,6 @@
 config/ga_credentials.json
 
 # Ignore application configuration
-/config/secrets.yml
 /config/application.yml
 /public/uploads
 .rbenv-vars
