@@ -1,3 +1,4 @@
-.checkbox
-	%input{:type => "checkbox", :task_id => task.id, :project_id => project.id, checked: task.complete?, :remote => true}
-	%label.card-task=task.description
+.form-check
+  %label.form-check-label.card-task
+    %input.form-check-input{:type => "checkbox", :task_id => task.id, :project_id => project.id, checked: task.complete?, :remote => true}
+    = task.description
