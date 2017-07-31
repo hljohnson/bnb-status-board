@@ -3,7 +3,7 @@
     Projects
     \- 
     Week
-    = Time.now.strftime('%W')
+    = Date.parse('2006-08-03').step(Date.today, 7).count
   / Button trigger modal
   %button.btn.btn-gray.header-align-btn
     =link_to 'New Project', new_project_path, {:remote => true, 'data-toggle' =>  "modal", 'data-animation' => "false",'data-target' => '#createNewModal'}
