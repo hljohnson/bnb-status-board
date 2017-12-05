@@ -20,7 +20,11 @@ class TimeEntryClient
 
     # Handle multiple pages
     2.upto(result["time_entries"]["pages"].to_i) do |page|
-      entries += fetch_time_entry_list(opts.merge(page: page))["time_entries"]["time_entry"]
+      result = fetch_time_entry_list(opts.merge(page: page))
+      time_entries = result["time_entries"]["time_entry"]
+      # When a page comes back and only has one time entry, Freshbooks returns just a hash rather than array of hashes
+      time_entries = [time_entries] if time_entries.is_a? Hash
+      entries += time_entries
     end
 
     entries
