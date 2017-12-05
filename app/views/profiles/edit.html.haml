@@ -1,0 +1,9 @@
+.container
+  .row
+    %h1 Edit profile
+  .row
+    = simple_form_for current_user, url: profile_path do |f|
+      = f.input :freshbooks_api_key
+      = f.input :max_vacation_hours
+
+      = f.submit "Save"

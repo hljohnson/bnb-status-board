@@ -32,6 +32,7 @@ gem 'simple_form', "~> 3.4"
 gem 'haml'
 gem 'font-awesome-rails'
 gem "default_value_for", "~> 3.0.0"
+gem 'ruby-freshbooks' # For communicating with Freshbooks
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

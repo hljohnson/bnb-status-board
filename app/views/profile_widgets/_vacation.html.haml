@@ -1,0 +1,9 @@
+.card
+  .card-header Vacation
+  .card-body.p-3
+    .text-center
+      %h2
+        = vacation.days
+        days
+    .progress
+      .progress-bar{ style: "width: #{vacation.vacation_used_percentage}"}= vacation.vacation_used_percentage

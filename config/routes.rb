@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :archives, only: [:index, :show]
+  resource :profile, only: [:show, :edit, :update]
 end
