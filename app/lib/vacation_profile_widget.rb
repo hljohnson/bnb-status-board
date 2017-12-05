@@ -31,7 +31,7 @@ class VacationProfileWidget
       time_entries = benchmark("Freshbooks hours fetch") { @client.fetch(date_from: "#{current_year}-01-01", date_to: "#{current_year}-12-31") }
       total = time_entries.map { |t| t["hours"].to_f }.reduce(:+)
       total
-    rescue
+    rescue TimeEntryClient::APIError
       0
     end
   end
