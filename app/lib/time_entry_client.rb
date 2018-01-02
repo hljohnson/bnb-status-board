@@ -16,7 +16,9 @@ class TimeEntryClient
     result = fetch_time_entry_list(opts)
     raise APIError, result["error"] if result["error"]
 
-    entries += result["time_entries"]["time_entry"]
+    entry = result["time_entries"]["time_entry"]
+    entry = [entry] if entry.is_a? Hash
+    entries += entry
 
     # Handle multiple pages
     2.upto(result["time_entries"]["pages"].to_i) do |page|
